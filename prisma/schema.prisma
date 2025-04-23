@@ -19,6 +19,8 @@ model User {
   email     String   @unique
   pw        String
   createdAt DateTime @default(now())
+  totalTodo Int
+  doneTodo  Int
   todos     Todo[]
 }
 
