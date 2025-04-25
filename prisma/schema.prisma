@@ -29,8 +29,7 @@ model Todo {
   title     String
   memo      String?
   done      Boolean
-  startDate DateTime?
-  endDate   DateTime?
+  category  String
   
   userId    Int     
   user      User     @relation(fields: [userId], references: [id])

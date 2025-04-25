@@ -1,3 +1,14 @@
+import Header from "@/components/common/Header";
+import { Calendar } from "@/components/ui/calendar";
 export default function Home() {
-  return <p> hi </p>;
+  return (
+    <>
+      <div>
+        <Header />
+        <div className="pl-[48px]">
+          <Calendar />
+        </div>
+      </div>
+    </>
+  );
 }
