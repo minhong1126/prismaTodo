@@ -15,21 +15,19 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  email     String   @unique
-  pw        String
-  createdAt DateTime @default(now())
+  id        Int    @id @default(autoincrement())
+  name      String @unique
+  totalTodo Int    @default(0)
+  doneTodo  Int    @default(0)
   todos     Todo[]
 }
 
 model Todo {
-  id        Int       @id @default(autoincrement())
-  title     String
-  memo      String?
-  done      Boolean
-  startDate DateTime?
-  endDate   DateTime?
+  id       Int     @id @default(autoincrement())
+  title    String
+  memo     String?
+  done     Boolean
+  category String?
 
   userId Int
   user   User @relation(fields: [userId], references: [id])

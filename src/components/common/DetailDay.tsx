@@ -1,7 +1,7 @@
 import React from "react";
 
 const DetailDay = () => {
-  return <div></div>;
+  return <div className="flex"></div>;
 };
 
 export default DetailDay;

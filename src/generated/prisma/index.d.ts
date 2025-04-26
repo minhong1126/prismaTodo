@@ -1004,68 +1004,70 @@ export namespace Prisma {
 
   export type UserAvgAggregateOutputType = {
     id: number | null
+    totalTodo: number | null
+    doneTodo: number | null
   }
 
   export type UserSumAggregateOutputType = {
     id: number | null
+    totalTodo: number | null
+    doneTodo: number | null
   }
 
   export type UserMinAggregateOutputType = {
     id: number | null
     name: string | null
-    email: string | null
-    pw: string | null
-    createdAt: Date | null
+    totalTodo: number | null
+    doneTodo: number | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    email: string | null
-    pw: string | null
-    createdAt: Date | null
+    totalTodo: number | null
+    doneTodo: number | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     name: number
-    email: number
-    pw: number
-    createdAt: number
+    totalTodo: number
+    doneTodo: number
     _all: number
   }
 
 
   export type UserAvgAggregateInputType = {
     id?: true
+    totalTodo?: true
+    doneTodo?: true
   }
 
   export type UserSumAggregateInputType = {
     id?: true
+    totalTodo?: true
+    doneTodo?: true
   }
 
   export type UserMinAggregateInputType = {
     id?: true
     name?: true
-    email?: true
-    pw?: true
-    createdAt?: true
+    totalTodo?: true
+    doneTodo?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     name?: true
-    email?: true
-    pw?: true
-    createdAt?: true
+    totalTodo?: true
+    doneTodo?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     name?: true
-    email?: true
-    pw?: true
-    createdAt?: true
+    totalTodo?: true
+    doneTodo?: true
     _all?: true
   }
 
@@ -1158,9 +1160,8 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: number
     name: string
-    email: string
-    pw: string
-    createdAt: Date
+    totalTodo: number
+    doneTodo: number
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1185,9 +1186,8 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
-    pw?: boolean
-    createdAt?: boolean
+    totalTodo?: boolean
+    doneTodo?: boolean
     todos?: boolean | User$todosArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1195,28 +1195,25 @@ export namespace Prisma {
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
-    pw?: boolean
-    createdAt?: boolean
+    totalTodo?: boolean
+    doneTodo?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
-    pw?: boolean
-    createdAt?: boolean
+    totalTodo?: boolean
+    doneTodo?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     name?: boolean
-    email?: boolean
-    pw?: boolean
-    createdAt?: boolean
+    totalTodo?: boolean
+    doneTodo?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "pw" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "totalTodo" | "doneTodo", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     todos?: boolean | User$todosArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1232,9 +1229,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      email: string
-      pw: string
-      createdAt: Date
+      totalTodo: number
+      doneTodo: number
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1661,9 +1657,8 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'Int'>
     readonly name: FieldRef<"User", 'String'>
-    readonly email: FieldRef<"User", 'String'>
-    readonly pw: FieldRef<"User", 'String'>
-    readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly totalTodo: FieldRef<"User", 'Int'>
+    readonly doneTodo: FieldRef<"User", 'Int'>
   }
     
 
@@ -2121,8 +2116,7 @@ export namespace Prisma {
     title: string | null
     memo: string | null
     done: boolean | null
-    startDate: Date | null
-    endDate: Date | null
+    category: string | null
     userId: number | null
   }
 
@@ -2131,8 +2125,7 @@ export namespace Prisma {
     title: string | null
     memo: string | null
     done: boolean | null
-    startDate: Date | null
-    endDate: Date | null
+    category: string | null
     userId: number | null
   }
 
@@ -2141,8 +2134,7 @@ export namespace Prisma {
     title: number
     memo: number
     done: number
-    startDate: number
-    endDate: number
+    category: number
     userId: number
     _all: number
   }
@@ -2163,8 +2155,7 @@ export namespace Prisma {
     title?: true
     memo?: true
     done?: true
-    startDate?: true
-    endDate?: true
+    category?: true
     userId?: true
   }
 
@@ -2173,8 +2164,7 @@ export namespace Prisma {
     title?: true
     memo?: true
     done?: true
-    startDate?: true
-    endDate?: true
+    category?: true
     userId?: true
   }
 
@@ -2183,8 +2173,7 @@ export namespace Prisma {
     title?: true
     memo?: true
     done?: true
-    startDate?: true
-    endDate?: true
+    category?: true
     userId?: true
     _all?: true
   }
@@ -2280,8 +2269,7 @@ export namespace Prisma {
     title: string
     memo: string | null
     done: boolean
-    startDate: Date | null
-    endDate: Date | null
+    category: string | null
     userId: number
     _count: TodoCountAggregateOutputType | null
     _avg: TodoAvgAggregateOutputType | null
@@ -2309,8 +2297,7 @@ export namespace Prisma {
     title?: boolean
     memo?: boolean
     done?: boolean
-    startDate?: boolean
-    endDate?: boolean
+    category?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["todo"]>
@@ -2320,8 +2307,7 @@ export namespace Prisma {
     title?: boolean
     memo?: boolean
     done?: boolean
-    startDate?: boolean
-    endDate?: boolean
+    category?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["todo"]>
@@ -2331,8 +2317,7 @@ export namespace Prisma {
     title?: boolean
     memo?: boolean
     done?: boolean
-    startDate?: boolean
-    endDate?: boolean
+    category?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["todo"]>
@@ -2342,12 +2327,11 @@ export namespace Prisma {
     title?: boolean
     memo?: boolean
     done?: boolean
-    startDate?: boolean
-    endDate?: boolean
+    category?: boolean
     userId?: boolean
   }
 
-  export type TodoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "memo" | "done" | "startDate" | "endDate" | "userId", ExtArgs["result"]["todo"]>
+  export type TodoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "memo" | "done" | "category" | "userId", ExtArgs["result"]["todo"]>
   export type TodoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2368,8 +2352,7 @@ export namespace Prisma {
       title: string
       memo: string | null
       done: boolean
-      startDate: Date | null
-      endDate: Date | null
+      category: string | null
       userId: number
     }, ExtArgs["result"]["todo"]>
     composites: {}
@@ -2799,8 +2782,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Todo", 'String'>
     readonly memo: FieldRef<"Todo", 'String'>
     readonly done: FieldRef<"Todo", 'Boolean'>
-    readonly startDate: FieldRef<"Todo", 'DateTime'>
-    readonly endDate: FieldRef<"Todo", 'DateTime'>
+    readonly category: FieldRef<"Todo", 'String'>
     readonly userId: FieldRef<"Todo", 'Int'>
   }
     
@@ -3233,9 +3215,8 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    email: 'email',
-    pw: 'pw',
-    createdAt: 'createdAt'
+    totalTodo: 'totalTodo',
+    doneTodo: 'doneTodo'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3246,8 +3227,7 @@ export namespace Prisma {
     title: 'title',
     memo: 'memo',
     done: 'done',
-    startDate: 'startDate',
-    endDate: 'endDate',
+    category: 'category',
     userId: 'userId'
   };
 
@@ -3312,20 +3292,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -3355,39 +3321,35 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
     name?: StringFilter<"User"> | string
-    email?: StringFilter<"User"> | string
-    pw?: StringFilter<"User"> | string
-    createdAt?: DateTimeFilter<"User"> | Date | string
+    totalTodo?: IntFilter<"User"> | number
+    doneTodo?: IntFilter<"User"> | number
     todos?: TodoListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    pw?: SortOrder
-    createdAt?: SortOrder
+    totalTodo?: SortOrder
+    doneTodo?: SortOrder
     todos?: TodoOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     name?: string
-    email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    pw?: StringFilter<"User"> | string
-    createdAt?: DateTimeFilter<"User"> | Date | string
+    totalTodo?: IntFilter<"User"> | number
+    doneTodo?: IntFilter<"User"> | number
     todos?: TodoListRelationFilter
-  }, "id" | "name" | "email">
+  }, "id" | "name">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    pw?: SortOrder
-    createdAt?: SortOrder
+    totalTodo?: SortOrder
+    doneTodo?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -3401,9 +3363,8 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
     name?: StringWithAggregatesFilter<"User"> | string
-    email?: StringWithAggregatesFilter<"User"> | string
-    pw?: StringWithAggregatesFilter<"User"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    totalTodo?: IntWithAggregatesFilter<"User"> | number
+    doneTodo?: IntWithAggregatesFilter<"User"> | number
   }
 
   export type TodoWhereInput = {
@@ -3414,8 +3375,7 @@ export namespace Prisma {
     title?: StringFilter<"Todo"> | string
     memo?: StringNullableFilter<"Todo"> | string | null
     done?: BoolFilter<"Todo"> | boolean
-    startDate?: DateTimeNullableFilter<"Todo"> | Date | string | null
-    endDate?: DateTimeNullableFilter<"Todo"> | Date | string | null
+    category?: StringNullableFilter<"Todo"> | string | null
     userId?: IntFilter<"Todo"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -3425,8 +3385,7 @@ export namespace Prisma {
     title?: SortOrder
     memo?: SortOrderInput | SortOrder
     done?: SortOrder
-    startDate?: SortOrderInput | SortOrder
-    endDate?: SortOrderInput | SortOrder
+    category?: SortOrderInput | SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -3439,8 +3398,7 @@ export namespace Prisma {
     title?: StringFilter<"Todo"> | string
     memo?: StringNullableFilter<"Todo"> | string | null
     done?: BoolFilter<"Todo"> | boolean
-    startDate?: DateTimeNullableFilter<"Todo"> | Date | string | null
-    endDate?: DateTimeNullableFilter<"Todo"> | Date | string | null
+    category?: StringNullableFilter<"Todo"> | string | null
     userId?: IntFilter<"Todo"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -3450,8 +3408,7 @@ export namespace Prisma {
     title?: SortOrder
     memo?: SortOrderInput | SortOrder
     done?: SortOrder
-    startDate?: SortOrderInput | SortOrder
-    endDate?: SortOrderInput | SortOrder
+    category?: SortOrderInput | SortOrder
     userId?: SortOrder
     _count?: TodoCountOrderByAggregateInput
     _avg?: TodoAvgOrderByAggregateInput
@@ -3468,74 +3425,65 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Todo"> | string
     memo?: StringNullableWithAggregatesFilter<"Todo"> | string | null
     done?: BoolWithAggregatesFilter<"Todo"> | boolean
-    startDate?: DateTimeNullableWithAggregatesFilter<"Todo"> | Date | string | null
-    endDate?: DateTimeNullableWithAggregatesFilter<"Todo"> | Date | string | null
+    category?: StringNullableWithAggregatesFilter<"Todo"> | string | null
     userId?: IntWithAggregatesFilter<"Todo"> | number
   }
 
   export type UserCreateInput = {
     name: string
-    email: string
-    pw: string
-    createdAt?: Date | string
+    totalTodo?: number
+    doneTodo?: number
     todos?: TodoCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
     name: string
-    email: string
-    pw: string
-    createdAt?: Date | string
+    totalTodo?: number
+    doneTodo?: number
     todos?: TodoUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    pw?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    doneTodo?: IntFieldUpdateOperationsInput | number
     todos?: TodoUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    pw?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    doneTodo?: IntFieldUpdateOperationsInput | number
     todos?: TodoUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: number
     name: string
-    email: string
-    pw: string
-    createdAt?: Date | string
+    totalTodo?: number
+    doneTodo?: number
   }
 
   export type UserUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    pw?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    doneTodo?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    pw?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    doneTodo?: IntFieldUpdateOperationsInput | number
   }
 
   export type TodoCreateInput = {
     title: string
     memo?: string | null
     done: boolean
-    startDate?: Date | string | null
-    endDate?: Date | string | null
+    category?: string | null
     user: UserCreateNestedOneWithoutTodosInput
   }
 
@@ -3544,8 +3492,7 @@ export namespace Prisma {
     title: string
     memo?: string | null
     done: boolean
-    startDate?: Date | string | null
-    endDate?: Date | string | null
+    category?: string | null
     userId: number
   }
 
@@ -3553,8 +3500,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
     done?: BoolFieldUpdateOperationsInput | boolean
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutTodosNestedInput
   }
 
@@ -3563,8 +3509,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
     done?: BoolFieldUpdateOperationsInput | boolean
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3573,8 +3518,7 @@ export namespace Prisma {
     title: string
     memo?: string | null
     done: boolean
-    startDate?: Date | string | null
-    endDate?: Date | string | null
+    category?: string | null
     userId: number
   }
 
@@ -3582,8 +3526,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
     done?: BoolFieldUpdateOperationsInput | boolean
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TodoUncheckedUpdateManyInput = {
@@ -3591,8 +3534,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
     done?: BoolFieldUpdateOperationsInput | boolean
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3622,17 +3564,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type TodoListRelationFilter = {
     every?: TodoWhereInput
     some?: TodoWhereInput
@@ -3646,33 +3577,34 @@ export namespace Prisma {
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    pw?: SortOrder
-    createdAt?: SortOrder
+    totalTodo?: SortOrder
+    doneTodo?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
     id?: SortOrder
+    totalTodo?: SortOrder
+    doneTodo?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    pw?: SortOrder
-    createdAt?: SortOrder
+    totalTodo?: SortOrder
+    doneTodo?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    pw?: SortOrder
-    createdAt?: SortOrder
+    totalTodo?: SortOrder
+    doneTodo?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     id?: SortOrder
+    totalTodo?: SortOrder
+    doneTodo?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -3709,20 +3641,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -3743,17 +3661,6 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -3769,8 +3676,7 @@ export namespace Prisma {
     title?: SortOrder
     memo?: SortOrder
     done?: SortOrder
-    startDate?: SortOrder
-    endDate?: SortOrder
+    category?: SortOrder
     userId?: SortOrder
   }
 
@@ -3784,8 +3690,7 @@ export namespace Prisma {
     title?: SortOrder
     memo?: SortOrder
     done?: SortOrder
-    startDate?: SortOrder
-    endDate?: SortOrder
+    category?: SortOrder
     userId?: SortOrder
   }
 
@@ -3794,8 +3699,7 @@ export namespace Prisma {
     title?: SortOrder
     memo?: SortOrder
     done?: SortOrder
-    startDate?: SortOrder
-    endDate?: SortOrder
+    category?: SortOrder
     userId?: SortOrder
   }
 
@@ -3830,20 +3734,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type TodoCreateNestedManyWithoutUserInput = {
     create?: XOR<TodoCreateWithoutUserInput, TodoUncheckedCreateWithoutUserInput> | TodoCreateWithoutUserInput[] | TodoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TodoCreateOrConnectWithoutUserInput | TodoCreateOrConnectWithoutUserInput[]
@@ -3862,8 +3752,12 @@ export namespace Prisma {
     set?: string
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type TodoUpdateManyWithoutUserNestedInput = {
@@ -3878,14 +3772,6 @@ export namespace Prisma {
     update?: TodoUpdateWithWhereUniqueWithoutUserInput | TodoUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: TodoUpdateManyWithWhereWithoutUserInput | TodoUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: TodoScalarWhereInput | TodoScalarWhereInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type TodoUncheckedUpdateManyWithoutUserNestedInput = {
@@ -3914,10 +3800,6 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
   }
 
   export type UserUpdateOneRequiredWithoutTodosNestedInput = {
@@ -3951,17 +3833,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -4008,20 +3879,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -4039,17 +3896,6 @@ export namespace Prisma {
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4088,26 +3934,11 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type TodoCreateWithoutUserInput = {
     title: string
     memo?: string | null
     done: boolean
-    startDate?: Date | string | null
-    endDate?: Date | string | null
+    category?: string | null
   }
 
   export type TodoUncheckedCreateWithoutUserInput = {
@@ -4115,8 +3946,7 @@ export namespace Prisma {
     title: string
     memo?: string | null
     done: boolean
-    startDate?: Date | string | null
-    endDate?: Date | string | null
+    category?: string | null
   }
 
   export type TodoCreateOrConnectWithoutUserInput = {
@@ -4153,24 +3983,21 @@ export namespace Prisma {
     title?: StringFilter<"Todo"> | string
     memo?: StringNullableFilter<"Todo"> | string | null
     done?: BoolFilter<"Todo"> | boolean
-    startDate?: DateTimeNullableFilter<"Todo"> | Date | string | null
-    endDate?: DateTimeNullableFilter<"Todo"> | Date | string | null
+    category?: StringNullableFilter<"Todo"> | string | null
     userId?: IntFilter<"Todo"> | number
   }
 
   export type UserCreateWithoutTodosInput = {
     name: string
-    email: string
-    pw: string
-    createdAt?: Date | string
+    totalTodo?: number
+    doneTodo?: number
   }
 
   export type UserUncheckedCreateWithoutTodosInput = {
     id?: number
     name: string
-    email: string
-    pw: string
-    createdAt?: Date | string
+    totalTodo?: number
+    doneTodo?: number
   }
 
   export type UserCreateOrConnectWithoutTodosInput = {
@@ -4191,17 +4018,15 @@ export namespace Prisma {
 
   export type UserUpdateWithoutTodosInput = {
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    pw?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    doneTodo?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUncheckedUpdateWithoutTodosInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    pw?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    doneTodo?: IntFieldUpdateOperationsInput | number
   }
 
   export type TodoCreateManyUserInput = {
@@ -4209,16 +4034,14 @@ export namespace Prisma {
     title: string
     memo?: string | null
     done: boolean
-    startDate?: Date | string | null
-    endDate?: Date | string | null
+    category?: string | null
   }
 
   export type TodoUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
     done?: BoolFieldUpdateOperationsInput | boolean
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TodoUncheckedUpdateWithoutUserInput = {
@@ -4226,8 +4049,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
     done?: BoolFieldUpdateOperationsInput | boolean
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TodoUncheckedUpdateManyWithoutUserInput = {
@@ -4235,8 +4057,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
     done?: BoolFieldUpdateOperationsInput | boolean
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

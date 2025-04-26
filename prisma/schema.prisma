@@ -13,14 +13,24 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Color {
+  BLACK
+  BLUE
+  SKYBLUE
+  YELLOW
+  PURPLE
+  GREEN
+  PINK
+  GRAY
+  WHITE
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   name      String   @unique
-  email     String   @unique
-  pw        String
-  createdAt DateTime @default(now())
-  totalTodo Int
-  doneTodo  Int
+  totalTodo Int      @default(0)
+  doneTodo  Int      @default(0)
   todos     Todo[]
 }
 
@@ -29,8 +39,15 @@ model Todo {
   title     String
   memo      String?
   done      Boolean
-  category  String
+  category  String?
   
   userId    Int     
   user      User     @relation(fields: [userId], references: [id])
+}
+
+model Category{
+  id Int @id @default(autoincrement())
+  name String
+  totalTodo Int @default(0)
+  color Color
 }

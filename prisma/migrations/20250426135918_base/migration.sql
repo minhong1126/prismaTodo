@@ -2,9 +2,8 @@
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
-    "pw" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "totalTodo" INTEGER NOT NULL DEFAULT 0,
+    "doneTodo" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -15,8 +14,7 @@ CREATE TABLE "Todo" (
     "title" TEXT NOT NULL,
     "memo" TEXT,
     "done" BOOLEAN NOT NULL,
-    "startDate" TIMESTAMP(3),
-    "endDate" TIMESTAMP(3),
+    "category" TEXT,
     "userId" INTEGER NOT NULL,
 
     CONSTRAINT "Todo_pkey" PRIMARY KEY ("id")
@@ -24,9 +22,6 @@ CREATE TABLE "Todo" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_name_key" ON "User"("name");
-
--- CreateIndex
-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
 ALTER TABLE "Todo" ADD CONSTRAINT "Todo_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
