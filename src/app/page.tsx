@@ -1,24 +1,20 @@
-import AddTodoBtn from "@/components/common/AddTodoBtn";
-import DetailDay from "@/components/common/DetailDay";
-import Header from "@/components/common/Header";
-import Todo from "@/components/common/Todo";
-import { Calendar } from "@/components/ui/calendar";
-export default function Home() {
+"use client";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import React from "react";
+
+const Page = () => {
+  const router = useRouter();
+  function onStart() {
+    // 대충 계정 생성 요철 코드 & 로컬 스토리지에 id 넣기
+    // 그다음에 todo로 이동
+    router.push("/todo");
+  }
   return (
-    <>
-      <div>
-        <Header />
-        <div className="flex">
-          <div className="pl-[48px]">
-            <Calendar />
-          </div>
-          <div className="w-full">
-            <DetailDay />
-            <Todo title="hi" id={1} />
-            <AddTodoBtn />
-          </div>
-        </div>
-      </div>
-    </>
+    <div>
+      <Button onClick={onStart}>시작하기</Button>
+    </div>
   );
-}
+};
+
+export default Page;
