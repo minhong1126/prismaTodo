@@ -9,11 +9,11 @@ export default function Home() {
     <>
       <div>
         <Header />
-        <div className="flex">
+        <div className="flex w-1/2">
           <div className="pl-[48px]">
             <Calendar />
           </div>
-          <div>
+          <div className="w-1/2">
             <DetailDay />
             <Todo title="hi" id={1} />
             <AddTodoBtn />

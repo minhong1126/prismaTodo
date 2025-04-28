@@ -133,6 +133,13 @@ exports.Prisma.TodoScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  totalTodo: 'totalTodo',
+  color: 'color'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -147,11 +154,22 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.Color = exports.$Enums.Color = {
+  BLACK: 'BLACK',
+  BLUE: 'BLUE',
+  SKYBLUE: 'SKYBLUE',
+  YELLOW: 'YELLOW',
+  PURPLE: 'PURPLE',
+  GREEN: 'GREEN',
+  PINK: 'PINK',
+  GRAY: 'GRAY',
+  WHITE: 'WHITE'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Todo: 'Todo'
+  Todo: 'Todo',
+  Category: 'Category'
 };
 
 /**
