@@ -1,16 +1,16 @@
 import AddTodoBtn from "@/components/common/AddTodoBtn";
+import Calendar from "@/components/common/Calendar";
 import DetailDay from "@/components/common/DetailDay";
 import Header from "@/components/common/Header";
 import Todo from "@/components/common/Todo";
-import { Calendar } from "@/components/ui/calendar";
 
 export default function Home() {
   return (
     <>
       <div>
         <Header />
-        <div className="flex w-1/2">
-          <div className="pl-[48px]">
+        <div className="w-full flex">
+          <div className="w-1/2 pl-[48px]">
             <Calendar />
           </div>
           <div className="w-1/2">
