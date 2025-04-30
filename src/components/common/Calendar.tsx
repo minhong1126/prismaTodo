@@ -1,21 +1,22 @@
 "use client";
-import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 
-export default function Calendar() {
-  const [selected, setSelected] = useState<Date>();
+interface CalendarProps {
+  selected: Date | undefined;
+  onSelect: (date: Date | undefined) => void;
+}
 
+export default function Calendar({ selected, onSelect }: CalendarProps) {
   return (
     <DayPicker
       animate
       mode="single"
       selected={selected}
-      onSelect={setSelected}
+      onSelect={onSelect}
       classNames={{
-        today: `border-[#4E4E4E] border-1 rounded-full`,
+        today: `font-extrabold`,
         selected: `bg-[#4E4E4E] text-white rounded-full`,
-        nav: ``,
       }}
     />
   );

@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import AddTodoBtn from "@/components/common/AddTodoBtn";
 import Calendar from "@/components/common/Calendar";
 import DetailDay from "@/components/common/DetailDay";
@@ -5,19 +7,21 @@ import Header from "@/components/common/Header";
 import Todo from "@/components/common/Todo";
 
 export default function Home() {
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    new Date()
+  );
+
   return (
     <>
-      <div>
-        <Header />
-        <div className="w-full flex">
-          <div className="w-1/2 pl-[48px]">
-            <Calendar />
-          </div>
-          <div className="w-1/2">
-            <DetailDay />
-            <Todo title="hi" id={1} />
-            <AddTodoBtn />
-          </div>
+      <Header />
+      <div className="w-full flex px-[48px]">
+        <div className="w-1/2">
+          <Calendar selected={selectedDate} onSelect={setSelectedDate} />
+        </div>
+        <div className="w-1/2">
+          <DetailDay selectedDate={selectedDate} onSelect={setSelectedDate} />
+          <Todo title="hi" id={1} />
+          <AddTodoBtn />
         </div>
       </div>
     </>
