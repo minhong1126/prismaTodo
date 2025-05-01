@@ -20,7 +20,7 @@ const Page = () => {
       .then((res) => {
         console.error(res);
         if (res.status == 200) {
-          localStorage.setItem("uerid", res.data.id);
+          localStorage.setItem("userId", res.data.id);
           router.push("/todo");
         }
       })

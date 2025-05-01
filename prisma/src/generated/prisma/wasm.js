@@ -128,8 +128,9 @@ exports.Prisma.TodoScalarFieldEnum = {
   id: 'id',
   title: 'title',
   memo: 'memo',
-  done: 'done',
+  isDone: 'isDone',
   category: 'category',
+  date: 'date',
   userId: 'userId'
 };
 

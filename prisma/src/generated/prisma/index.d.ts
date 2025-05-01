@@ -2230,8 +2230,9 @@ export namespace Prisma {
     id: number | null
     title: string | null
     memo: string | null
-    done: boolean | null
+    isDone: boolean | null
     category: string | null
+    date: Date | null
     userId: number | null
   }
 
@@ -2239,8 +2240,9 @@ export namespace Prisma {
     id: number | null
     title: string | null
     memo: string | null
-    done: boolean | null
+    isDone: boolean | null
     category: string | null
+    date: Date | null
     userId: number | null
   }
 
@@ -2248,8 +2250,9 @@ export namespace Prisma {
     id: number
     title: number
     memo: number
-    done: number
+    isDone: number
     category: number
+    date: number
     userId: number
     _all: number
   }
@@ -2269,8 +2272,9 @@ export namespace Prisma {
     id?: true
     title?: true
     memo?: true
-    done?: true
+    isDone?: true
     category?: true
+    date?: true
     userId?: true
   }
 
@@ -2278,8 +2282,9 @@ export namespace Prisma {
     id?: true
     title?: true
     memo?: true
-    done?: true
+    isDone?: true
     category?: true
+    date?: true
     userId?: true
   }
 
@@ -2287,8 +2292,9 @@ export namespace Prisma {
     id?: true
     title?: true
     memo?: true
-    done?: true
+    isDone?: true
     category?: true
+    date?: true
     userId?: true
     _all?: true
   }
@@ -2383,8 +2389,9 @@ export namespace Prisma {
     id: number
     title: string
     memo: string | null
-    done: boolean
+    isDone: boolean
     category: string | null
+    date: Date
     userId: number
     _count: TodoCountAggregateOutputType | null
     _avg: TodoAvgAggregateOutputType | null
@@ -2411,8 +2418,9 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     memo?: boolean
-    done?: boolean
+    isDone?: boolean
     category?: boolean
+    date?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["todo"]>
@@ -2421,8 +2429,9 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     memo?: boolean
-    done?: boolean
+    isDone?: boolean
     category?: boolean
+    date?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["todo"]>
@@ -2431,8 +2440,9 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     memo?: boolean
-    done?: boolean
+    isDone?: boolean
     category?: boolean
+    date?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["todo"]>
@@ -2441,12 +2451,13 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     memo?: boolean
-    done?: boolean
+    isDone?: boolean
     category?: boolean
+    date?: boolean
     userId?: boolean
   }
 
-  export type TodoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "memo" | "done" | "category" | "userId", ExtArgs["result"]["todo"]>
+  export type TodoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "memo" | "isDone" | "category" | "date" | "userId", ExtArgs["result"]["todo"]>
   export type TodoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2466,8 +2477,9 @@ export namespace Prisma {
       id: number
       title: string
       memo: string | null
-      done: boolean
+      isDone: boolean
       category: string | null
+      date: Date
       userId: number
     }, ExtArgs["result"]["todo"]>
     composites: {}
@@ -2896,8 +2908,9 @@ export namespace Prisma {
     readonly id: FieldRef<"Todo", 'Int'>
     readonly title: FieldRef<"Todo", 'String'>
     readonly memo: FieldRef<"Todo", 'String'>
-    readonly done: FieldRef<"Todo", 'Boolean'>
+    readonly isDone: FieldRef<"Todo", 'Boolean'>
     readonly category: FieldRef<"Todo", 'String'>
+    readonly date: FieldRef<"Todo", 'DateTime'>
     readonly userId: FieldRef<"Todo", 'Int'>
   }
     
@@ -4361,8 +4374,9 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     memo: 'memo',
-    done: 'done',
+    isDone: 'isDone',
     category: 'category',
+    date: 'date',
     userId: 'userId'
   };
 
@@ -4440,6 +4454,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -4533,8 +4561,9 @@ export namespace Prisma {
     id?: IntFilter<"Todo"> | number
     title?: StringFilter<"Todo"> | string
     memo?: StringNullableFilter<"Todo"> | string | null
-    done?: BoolFilter<"Todo"> | boolean
+    isDone?: BoolFilter<"Todo"> | boolean
     category?: StringNullableFilter<"Todo"> | string | null
+    date?: DateTimeFilter<"Todo"> | Date | string
     userId?: IntFilter<"Todo"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -4543,8 +4572,9 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     memo?: SortOrderInput | SortOrder
-    done?: SortOrder
+    isDone?: SortOrder
     category?: SortOrderInput | SortOrder
+    date?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -4556,8 +4586,9 @@ export namespace Prisma {
     NOT?: TodoWhereInput | TodoWhereInput[]
     title?: StringFilter<"Todo"> | string
     memo?: StringNullableFilter<"Todo"> | string | null
-    done?: BoolFilter<"Todo"> | boolean
+    isDone?: BoolFilter<"Todo"> | boolean
     category?: StringNullableFilter<"Todo"> | string | null
+    date?: DateTimeFilter<"Todo"> | Date | string
     userId?: IntFilter<"Todo"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -4566,8 +4597,9 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     memo?: SortOrderInput | SortOrder
-    done?: SortOrder
+    isDone?: SortOrder
     category?: SortOrderInput | SortOrder
+    date?: SortOrder
     userId?: SortOrder
     _count?: TodoCountOrderByAggregateInput
     _avg?: TodoAvgOrderByAggregateInput
@@ -4583,8 +4615,9 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Todo"> | number
     title?: StringWithAggregatesFilter<"Todo"> | string
     memo?: StringNullableWithAggregatesFilter<"Todo"> | string | null
-    done?: BoolWithAggregatesFilter<"Todo"> | boolean
+    isDone?: BoolWithAggregatesFilter<"Todo"> | boolean
     category?: StringNullableWithAggregatesFilter<"Todo"> | string | null
+    date?: DateTimeWithAggregatesFilter<"Todo"> | Date | string
     userId?: IntWithAggregatesFilter<"Todo"> | number
   }
 
@@ -4690,8 +4723,9 @@ export namespace Prisma {
   export type TodoCreateInput = {
     title: string
     memo?: string | null
-    done: boolean
+    isDone: boolean
     category?: string | null
+    date: Date | string
     user: UserCreateNestedOneWithoutTodosInput
   }
 
@@ -4699,16 +4733,18 @@ export namespace Prisma {
     id?: number
     title: string
     memo?: string | null
-    done: boolean
+    isDone: boolean
     category?: string | null
+    date: Date | string
     userId: number
   }
 
   export type TodoUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
-    done?: BoolFieldUpdateOperationsInput | boolean
+    isDone?: BoolFieldUpdateOperationsInput | boolean
     category?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTodosNestedInput
   }
 
@@ -4716,8 +4752,9 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
-    done?: BoolFieldUpdateOperationsInput | boolean
+    isDone?: BoolFieldUpdateOperationsInput | boolean
     category?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4725,24 +4762,27 @@ export namespace Prisma {
     id?: number
     title: string
     memo?: string | null
-    done: boolean
+    isDone: boolean
     category?: string | null
+    date: Date | string
     userId: number
   }
 
   export type TodoUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
-    done?: BoolFieldUpdateOperationsInput | boolean
+    isDone?: BoolFieldUpdateOperationsInput | boolean
     category?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TodoUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
-    done?: BoolFieldUpdateOperationsInput | boolean
+    isDone?: BoolFieldUpdateOperationsInput | boolean
     category?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4915,6 +4955,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -4929,8 +4980,9 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     memo?: SortOrder
-    done?: SortOrder
+    isDone?: SortOrder
     category?: SortOrder
+    date?: SortOrder
     userId?: SortOrder
   }
 
@@ -4943,8 +4995,9 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     memo?: SortOrder
-    done?: SortOrder
+    isDone?: SortOrder
     category?: SortOrder
+    date?: SortOrder
     userId?: SortOrder
   }
 
@@ -4952,8 +5005,9 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     memo?: SortOrder
-    done?: SortOrder
+    isDone?: SortOrder
     category?: SortOrder
+    date?: SortOrder
     userId?: SortOrder
   }
 
@@ -4986,6 +5040,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type EnumColorFilter<$PrismaModel = never> = {
@@ -5104,6 +5172,10 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type UserUpdateOneRequiredWithoutTodosNestedInput = {
     create?: XOR<UserCreateWithoutTodosInput, UserUncheckedCreateWithoutTodosInput>
     connectOrCreate?: UserCreateOrConnectWithoutTodosInput
@@ -5204,6 +5276,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5240,6 +5323,20 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type NestedEnumColorFilter<$PrismaModel = never> = {
     equals?: $Enums.Color | EnumColorFieldRefInput<$PrismaModel>
     in?: $Enums.Color[] | ListEnumColorFieldRefInput<$PrismaModel>
@@ -5260,16 +5357,18 @@ export namespace Prisma {
   export type TodoCreateWithoutUserInput = {
     title: string
     memo?: string | null
-    done: boolean
+    isDone: boolean
     category?: string | null
+    date: Date | string
   }
 
   export type TodoUncheckedCreateWithoutUserInput = {
     id?: number
     title: string
     memo?: string | null
-    done: boolean
+    isDone: boolean
     category?: string | null
+    date: Date | string
   }
 
   export type TodoCreateOrConnectWithoutUserInput = {
@@ -5305,8 +5404,9 @@ export namespace Prisma {
     id?: IntFilter<"Todo"> | number
     title?: StringFilter<"Todo"> | string
     memo?: StringNullableFilter<"Todo"> | string | null
-    done?: BoolFilter<"Todo"> | boolean
+    isDone?: BoolFilter<"Todo"> | boolean
     category?: StringNullableFilter<"Todo"> | string | null
+    date?: DateTimeFilter<"Todo"> | Date | string
     userId?: IntFilter<"Todo"> | number
   }
 
@@ -5356,31 +5456,35 @@ export namespace Prisma {
     id?: number
     title: string
     memo?: string | null
-    done: boolean
+    isDone: boolean
     category?: string | null
+    date: Date | string
   }
 
   export type TodoUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
-    done?: BoolFieldUpdateOperationsInput | boolean
+    isDone?: BoolFieldUpdateOperationsInput | boolean
     category?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TodoUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
-    done?: BoolFieldUpdateOperationsInput | boolean
+    isDone?: BoolFieldUpdateOperationsInput | boolean
     category?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TodoUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     memo?: NullableStringFieldUpdateOperationsInput | string | null
-    done?: BoolFieldUpdateOperationsInput | boolean
+    isDone?: BoolFieldUpdateOperationsInput | boolean
     category?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

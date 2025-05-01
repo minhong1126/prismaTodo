@@ -1,15 +1,18 @@
 import prisma from "@/lib/prisma";
+import { todoType } from "@/type/todoType";
 
-type TodoProps = {
-  title: string;
-  memo?: string;
-  isDone: boolean;
-  category: string;
-};
-
-export const addTodo = async (data: { todo: TodoProps }) => {
-  const addedTodo = await prisma.todo.create({
+export const createTodo = async (data: todoType) => {
+  const todo = await prisma.todo.create({
     data,
   });
-  return addedTodo;
+  return todo;
+};
+
+export const getTodoList = async (date: Date) => {
+  const todoList = await prisma.todo.findMany({
+    where: {
+      date: date,
+    },
+  });
+  return todoList;
 };

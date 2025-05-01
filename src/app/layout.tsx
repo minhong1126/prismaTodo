@@ -1,5 +1,6 @@
 import React from "react";
 import "./globals.css";
+import "./color.css";
 
 export default function RootLayout({
   children,

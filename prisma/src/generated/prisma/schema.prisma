@@ -35,11 +35,12 @@ model User {
 }
 
 model Todo {
-  id       Int     @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   title    String
   memo     String?
-  done     Boolean
+  isDone   Boolean
   category String?
+  date     DateTime
 
   userId Int
   user   User @relation(fields: [userId], references: [id])

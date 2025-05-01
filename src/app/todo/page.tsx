@@ -5,6 +5,7 @@ import Calendar from "@/components/common/Calendar";
 import DetailDay from "@/components/common/DetailDay";
 import Header from "@/components/common/Header";
 import Todo from "@/components/common/Todo";
+import AddCategoryBtn from "@/components/common/AddCategoryBtn";
 
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
@@ -22,6 +23,7 @@ export default function Home() {
           <DetailDay selectedDate={selectedDate} onSelect={setSelectedDate} />
           <Todo title="hi" id={1} />
           <AddTodoBtn />
+          <AddCategoryBtn />
         </div>
       </div>
     </>
