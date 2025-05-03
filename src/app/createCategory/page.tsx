@@ -8,11 +8,10 @@ const CreateTodo = () => {
   const [color, setColor] = useState<categoryType["color"]>(
     CategoryColor.WHITE
   );
-  const categoryRef = useRef<HTMLInputElement>(null);
-
   const CategoryColorList = Object.values(
     CategoryColor
   ) as categoryType["color"][];
+  const categoryRef = useRef<HTMLInputElement>(null);
 
   const handleColorChange = (selectedColor: categoryType["color"]) => {
     setColor(selectedColor);
@@ -35,7 +34,7 @@ const CreateTodo = () => {
     <div>
       <form onSubmit={onSubmit}>
         <label>카테고리 이름</label>
-        <input type="text" />
+        <input type="text" ref={categoryRef} />
 
         <label>색 설정</label>
         <div className="flex gap-2 flex-wrap mt-2">

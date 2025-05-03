@@ -1,17 +1,23 @@
 import prisma from "@/lib/prisma";
 
-export const checkUserExist = async (name: string): Promise<boolean> => {
+export const checkUserExist = async (name: string) => {
   const existingUser = await prisma.user.findUnique({
     where: {
-      name,
+      name: name,
     },
   });
-  return !!existingUser;
+  return existingUser;
 };
 
-export async function createUser(data: { name: string }) {
-  const user = await prisma.user.create({
-    data,
-  });
-  return user;
+export async function createUser(name: string) {
+  try {
+    const user = await prisma.user.create({
+      data: {
+        name: name,
+      },
+    });
+    return user;
+  } catch (error) {
+    return error;
+  }
 }

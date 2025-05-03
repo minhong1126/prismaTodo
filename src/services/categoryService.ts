@@ -1,20 +1,28 @@
 import prisma from "@/lib/prisma";
 import { categoryType } from "@/type/categoryType";
 
-export const createCategory = async (data: categoryType) => {
+export const createCategory = async ({ name, userId, color }: categoryType) => {
   const category = await prisma.category.create({
-    data,
+    data: {
+      name,
+      color,
+      user: {
+        connect: {
+          userId: userId,
+        },
+      },
+    },
   });
   return category;
 };
 
 export const checkCategoryExist = async (name: string): Promise<boolean> => {
-  const existingUser = await prisma.user.findUnique({
+  const existingCategory = await prisma.category.findFirst({
     where: {
-      name,
+      name: name,
     },
   });
-  return !!existingUser;
+  return !!existingCategory;
 };
 
 export const getcategoryList = async () => {

@@ -6,18 +6,25 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name } = body;
 
-    const isUserExist = await checkUserExist(name);
-    if (isUserExist) {
-      return NextResponse.json(
-        { message: "이미 존재하는 이름입니다." },
-        { status: 400 }
-      );
+    if (!name) {
+      return NextResponse.json({ error: "Name is required" }, { status: 400 });
+    }
+
+    const existingUser = await checkUserExist(name);
+
+    if (existingUser) {
+      return NextResponse.json(existingUser, { status: 200 });
     } else {
-      const user = await createUser({ name });
-      return NextResponse.json(user);
+      const newUser = await createUser(name);
+      return NextResponse.json(newUser, { status: 201 });
     }
   } catch (error) {
-    console.error("Error creating user:", error);
-    return NextResponse.json(error);
+    console.error("Error in POST request:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
   }
 }
+
+export async function GET(userId: number) {}

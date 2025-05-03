@@ -2,26 +2,39 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import axios from "axios";
 
 const Page = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
+  // useEffect(() => {
+  //   if (localStorage.getItem("userId")) {
+  //     router.push("/todo");
+  //     return;
+  //   }
+  // });
+
   async function onStart(e: React.FormEvent) {
     e.preventDefault();
     const name = nameRef.current?.value;
+    if (!name) return;
 
     axios
-      .post("api/user", {
-        name: name,
-      })
+      .post("api/user", { name: name })
       .then((res) => {
-        console.error(res);
+        switch (res.status) {
+          case 200:
+          case 201:
+            localStorage.setItem("userId", res.data.id);
+            console.error(res.status, res.data.id);
+            break;
+          default:
+            console.error("No status:", res);
+        }
         if (res.status == 200) {
-          localStorage.setItem("userId", res.data.id);
-          router.push("/todo");
+          // router.push("/todo");
         }
       })
       .catch((err) => {

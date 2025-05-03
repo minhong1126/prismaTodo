@@ -27,11 +27,12 @@ enum Color {
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  name      String @unique
-  totalTodo Int    @default(0)
-  doneTodo  Int    @default(0)
-  todos     Todo[]
+  id          Int        @id @default(autoincrement())
+  name        String     @unique
+  totalTodo   Int        @default(0)
+  doneTodo    Int        @default(0)
+  todos       Todo[]
+  cateogories Category[]
 }
 
 model Todo {
@@ -48,7 +49,10 @@ model Todo {
 
 model Category {
   id        Int    @id @default(autoincrement())
-  name      String
+  name      String @unique
   totalTodo Int    @default(0)
   color     Color
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 }

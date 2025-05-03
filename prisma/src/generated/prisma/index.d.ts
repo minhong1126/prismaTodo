@@ -265,8 +265,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.7.0
+   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
    */
   export type PrismaVersion = {
     client: string
@@ -1076,10 +1076,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     todos: number
+    cateogories: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     todos?: boolean | UserCountOutputTypeCountTodosArgs
+    cateogories?: boolean | UserCountOutputTypeCountCateogoriesArgs
   }
 
   // Custom InputTypes
@@ -1098,6 +1100,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountTodosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TodoWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCateogoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
   }
 
 
@@ -1304,6 +1313,7 @@ export namespace Prisma {
     totalTodo?: boolean
     doneTodo?: boolean
     todos?: boolean | User$todosArgs<ExtArgs>
+    cateogories?: boolean | User$cateogoriesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1331,6 +1341,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "totalTodo" | "doneTodo", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     todos?: boolean | User$todosArgs<ExtArgs>
+    cateogories?: boolean | User$cateogoriesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1340,6 +1351,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       todos: Prisma.$TodoPayload<ExtArgs>[]
+      cateogories: Prisma.$CategoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1741,6 +1753,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     todos<T extends User$todosArgs<ExtArgs> = {}>(args?: Subset<T, User$todosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cateogories<T extends User$cateogoriesArgs<ExtArgs> = {}>(args?: Subset<T, User$cateogoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2183,6 +2196,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TodoScalarFieldEnum | TodoScalarFieldEnum[]
+  }
+
+  /**
+   * User.cateogories
+   */
+  export type User$cateogoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    cursor?: CategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
   }
 
   /**
@@ -3341,11 +3378,13 @@ export namespace Prisma {
   export type CategoryAvgAggregateOutputType = {
     id: number | null
     totalTodo: number | null
+    userId: number | null
   }
 
   export type CategorySumAggregateOutputType = {
     id: number | null
     totalTodo: number | null
+    userId: number | null
   }
 
   export type CategoryMinAggregateOutputType = {
@@ -3353,6 +3392,7 @@ export namespace Prisma {
     name: string | null
     totalTodo: number | null
     color: $Enums.Color | null
+    userId: number | null
   }
 
   export type CategoryMaxAggregateOutputType = {
@@ -3360,6 +3400,7 @@ export namespace Prisma {
     name: string | null
     totalTodo: number | null
     color: $Enums.Color | null
+    userId: number | null
   }
 
   export type CategoryCountAggregateOutputType = {
@@ -3367,6 +3408,7 @@ export namespace Prisma {
     name: number
     totalTodo: number
     color: number
+    userId: number
     _all: number
   }
 
@@ -3374,11 +3416,13 @@ export namespace Prisma {
   export type CategoryAvgAggregateInputType = {
     id?: true
     totalTodo?: true
+    userId?: true
   }
 
   export type CategorySumAggregateInputType = {
     id?: true
     totalTodo?: true
+    userId?: true
   }
 
   export type CategoryMinAggregateInputType = {
@@ -3386,6 +3430,7 @@ export namespace Prisma {
     name?: true
     totalTodo?: true
     color?: true
+    userId?: true
   }
 
   export type CategoryMaxAggregateInputType = {
@@ -3393,6 +3438,7 @@ export namespace Prisma {
     name?: true
     totalTodo?: true
     color?: true
+    userId?: true
   }
 
   export type CategoryCountAggregateInputType = {
@@ -3400,6 +3446,7 @@ export namespace Prisma {
     name?: true
     totalTodo?: true
     color?: true
+    userId?: true
     _all?: true
   }
 
@@ -3494,6 +3541,7 @@ export namespace Prisma {
     name: string
     totalTodo: number
     color: $Enums.Color
+    userId: number
     _count: CategoryCountAggregateOutputType | null
     _avg: CategoryAvgAggregateOutputType | null
     _sum: CategorySumAggregateOutputType | null
@@ -3520,6 +3568,8 @@ export namespace Prisma {
     name?: boolean
     totalTodo?: boolean
     color?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3527,6 +3577,8 @@ export namespace Prisma {
     name?: boolean
     totalTodo?: boolean
     color?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3534,6 +3586,8 @@ export namespace Prisma {
     name?: boolean
     totalTodo?: boolean
     color?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
@@ -3541,18 +3595,31 @@ export namespace Prisma {
     name?: boolean
     totalTodo?: boolean
     color?: boolean
+    userId?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "totalTodo" | "color", ExtArgs["result"]["category"]>
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "totalTodo" | "color" | "userId", ExtArgs["result"]["category"]>
+  export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Category"
-    objects: {}
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       totalTodo: number
       color: $Enums.Color
+      userId: number
     }, ExtArgs["result"]["category"]>
     composites: {}
   }
@@ -3947,6 +4014,7 @@ export namespace Prisma {
    */
   export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3980,6 +4048,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Category", 'String'>
     readonly totalTodo: FieldRef<"Category", 'Int'>
     readonly color: FieldRef<"Category", 'Color'>
+    readonly userId: FieldRef<"Category", 'Int'>
   }
     
 
@@ -3996,6 +4065,10 @@ export namespace Prisma {
      * Omit specific fields from the Category
      */
     omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
     /**
      * Filter, which Category to fetch.
      */
@@ -4015,6 +4088,10 @@ export namespace Prisma {
      */
     omit?: CategoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
      * Filter, which Category to fetch.
      */
     where: CategoryWhereUniqueInput
@@ -4032,6 +4109,10 @@ export namespace Prisma {
      * Omit specific fields from the Category
      */
     omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
     /**
      * Filter, which Category to fetch.
      */
@@ -4081,6 +4162,10 @@ export namespace Prisma {
      */
     omit?: CategoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
      * Filter, which Category to fetch.
      */
     where?: CategoryWhereInput
@@ -4129,6 +4214,10 @@ export namespace Prisma {
      */
     omit?: CategoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
      * Filter, which Categories to fetch.
      */
     where?: CategoryWhereInput
@@ -4172,6 +4261,10 @@ export namespace Prisma {
      */
     omit?: CategoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
      * The data needed to create a Category.
      */
     data: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
@@ -4205,6 +4298,10 @@ export namespace Prisma {
      */
     data: CategoryCreateManyInput | CategoryCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4219,6 +4316,10 @@ export namespace Prisma {
      * Omit specific fields from the Category
      */
     omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
     /**
      * The data needed to update a Category.
      */
@@ -4271,6 +4372,10 @@ export namespace Prisma {
      * Limit how many Categories to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4285,6 +4390,10 @@ export namespace Prisma {
      * Omit specific fields from the Category
      */
     omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
     /**
      * The filter to search for the Category to update in case it exists.
      */
@@ -4311,6 +4420,10 @@ export namespace Prisma {
      * Omit specific fields from the Category
      */
     omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
     /**
      * Filter which Category to delete.
      */
@@ -4343,6 +4456,10 @@ export namespace Prisma {
      * Omit specific fields from the Category
      */
     omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
   }
 
 
@@ -4387,7 +4504,8 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     totalTodo: 'totalTodo',
-    color: 'color'
+    color: 'color',
+    userId: 'userId'
   };
 
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
@@ -4511,6 +4629,7 @@ export namespace Prisma {
     totalTodo?: IntFilter<"User"> | number
     doneTodo?: IntFilter<"User"> | number
     todos?: TodoListRelationFilter
+    cateogories?: CategoryListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4519,6 +4638,7 @@ export namespace Prisma {
     totalTodo?: SortOrder
     doneTodo?: SortOrder
     todos?: TodoOrderByRelationAggregateInput
+    cateogories?: CategoryOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4530,6 +4650,7 @@ export namespace Prisma {
     totalTodo?: IntFilter<"User"> | number
     doneTodo?: IntFilter<"User"> | number
     todos?: TodoListRelationFilter
+    cateogories?: CategoryListRelationFilter
   }, "id" | "name">
 
   export type UserOrderByWithAggregationInput = {
@@ -4629,6 +4750,8 @@ export namespace Prisma {
     name?: StringFilter<"Category"> | string
     totalTodo?: IntFilter<"Category"> | number
     color?: EnumColorFilter<"Category"> | $Enums.Color
+    userId?: IntFilter<"Category"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type CategoryOrderByWithRelationInput = {
@@ -4636,23 +4759,28 @@ export namespace Prisma {
     name?: SortOrder
     totalTodo?: SortOrder
     color?: SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    name?: string
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
-    name?: StringFilter<"Category"> | string
     totalTodo?: IntFilter<"Category"> | number
     color?: EnumColorFilter<"Category"> | $Enums.Color
-  }, "id">
+    userId?: IntFilter<"Category"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "name">
 
   export type CategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     totalTodo?: SortOrder
     color?: SortOrder
+    userId?: SortOrder
     _count?: CategoryCountOrderByAggregateInput
     _avg?: CategoryAvgOrderByAggregateInput
     _max?: CategoryMaxOrderByAggregateInput
@@ -4668,6 +4796,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Category"> | string
     totalTodo?: IntWithAggregatesFilter<"Category"> | number
     color?: EnumColorWithAggregatesFilter<"Category"> | $Enums.Color
+    userId?: IntWithAggregatesFilter<"Category"> | number
   }
 
   export type UserCreateInput = {
@@ -4675,6 +4804,7 @@ export namespace Prisma {
     totalTodo?: number
     doneTodo?: number
     todos?: TodoCreateNestedManyWithoutUserInput
+    cateogories?: CategoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4683,6 +4813,7 @@ export namespace Prisma {
     totalTodo?: number
     doneTodo?: number
     todos?: TodoUncheckedCreateNestedManyWithoutUserInput
+    cateogories?: CategoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -4690,6 +4821,7 @@ export namespace Prisma {
     totalTodo?: IntFieldUpdateOperationsInput | number
     doneTodo?: IntFieldUpdateOperationsInput | number
     todos?: TodoUpdateManyWithoutUserNestedInput
+    cateogories?: CategoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4698,6 +4830,7 @@ export namespace Prisma {
     totalTodo?: IntFieldUpdateOperationsInput | number
     doneTodo?: IntFieldUpdateOperationsInput | number
     todos?: TodoUncheckedUpdateManyWithoutUserNestedInput
+    cateogories?: CategoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4790,6 +4923,7 @@ export namespace Prisma {
     name: string
     totalTodo?: number
     color: $Enums.Color
+    user: UserCreateNestedOneWithoutCateogoriesInput
   }
 
   export type CategoryUncheckedCreateInput = {
@@ -4797,12 +4931,14 @@ export namespace Prisma {
     name: string
     totalTodo?: number
     color: $Enums.Color
+    userId: number
   }
 
   export type CategoryUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     totalTodo?: IntFieldUpdateOperationsInput | number
     color?: EnumColorFieldUpdateOperationsInput | $Enums.Color
+    user?: UserUpdateOneRequiredWithoutCateogoriesNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
@@ -4810,6 +4946,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     totalTodo?: IntFieldUpdateOperationsInput | number
     color?: EnumColorFieldUpdateOperationsInput | $Enums.Color
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type CategoryCreateManyInput = {
@@ -4817,6 +4954,7 @@ export namespace Prisma {
     name: string
     totalTodo?: number
     color: $Enums.Color
+    userId: number
   }
 
   export type CategoryUpdateManyMutationInput = {
@@ -4830,6 +4968,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     totalTodo?: IntFieldUpdateOperationsInput | number
     color?: EnumColorFieldUpdateOperationsInput | $Enums.Color
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4864,7 +5003,17 @@ export namespace Prisma {
     none?: TodoWhereInput
   }
 
+  export type CategoryListRelationFilter = {
+    every?: CategoryWhereInput
+    some?: CategoryWhereInput
+    none?: CategoryWhereInput
+  }
+
   export type TodoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CategoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5068,11 +5217,13 @@ export namespace Prisma {
     name?: SortOrder
     totalTodo?: SortOrder
     color?: SortOrder
+    userId?: SortOrder
   }
 
   export type CategoryAvgOrderByAggregateInput = {
     id?: SortOrder
     totalTodo?: SortOrder
+    userId?: SortOrder
   }
 
   export type CategoryMaxOrderByAggregateInput = {
@@ -5080,6 +5231,7 @@ export namespace Prisma {
     name?: SortOrder
     totalTodo?: SortOrder
     color?: SortOrder
+    userId?: SortOrder
   }
 
   export type CategoryMinOrderByAggregateInput = {
@@ -5087,11 +5239,13 @@ export namespace Prisma {
     name?: SortOrder
     totalTodo?: SortOrder
     color?: SortOrder
+    userId?: SortOrder
   }
 
   export type CategorySumOrderByAggregateInput = {
     id?: SortOrder
     totalTodo?: SortOrder
+    userId?: SortOrder
   }
 
   export type EnumColorWithAggregatesFilter<$PrismaModel = never> = {
@@ -5111,11 +5265,25 @@ export namespace Prisma {
     connect?: TodoWhereUniqueInput | TodoWhereUniqueInput[]
   }
 
+  export type CategoryCreateNestedManyWithoutUserInput = {
+    create?: XOR<CategoryCreateWithoutUserInput, CategoryUncheckedCreateWithoutUserInput> | CategoryCreateWithoutUserInput[] | CategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutUserInput | CategoryCreateOrConnectWithoutUserInput[]
+    createMany?: CategoryCreateManyUserInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
   export type TodoUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<TodoCreateWithoutUserInput, TodoUncheckedCreateWithoutUserInput> | TodoCreateWithoutUserInput[] | TodoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TodoCreateOrConnectWithoutUserInput | TodoCreateOrConnectWithoutUserInput[]
     createMany?: TodoCreateManyUserInputEnvelope
     connect?: TodoWhereUniqueInput | TodoWhereUniqueInput[]
+  }
+
+  export type CategoryUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CategoryCreateWithoutUserInput, CategoryUncheckedCreateWithoutUserInput> | CategoryCreateWithoutUserInput[] | CategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutUserInput | CategoryCreateOrConnectWithoutUserInput[]
+    createMany?: CategoryCreateManyUserInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5144,6 +5312,20 @@ export namespace Prisma {
     deleteMany?: TodoScalarWhereInput | TodoScalarWhereInput[]
   }
 
+  export type CategoryUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CategoryCreateWithoutUserInput, CategoryUncheckedCreateWithoutUserInput> | CategoryCreateWithoutUserInput[] | CategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutUserInput | CategoryCreateOrConnectWithoutUserInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutUserInput | CategoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CategoryCreateManyUserInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutUserInput | CategoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutUserInput | CategoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
   export type TodoUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<TodoCreateWithoutUserInput, TodoUncheckedCreateWithoutUserInput> | TodoCreateWithoutUserInput[] | TodoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TodoCreateOrConnectWithoutUserInput | TodoCreateOrConnectWithoutUserInput[]
@@ -5156,6 +5338,20 @@ export namespace Prisma {
     update?: TodoUpdateWithWhereUniqueWithoutUserInput | TodoUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: TodoUpdateManyWithWhereWithoutUserInput | TodoUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: TodoScalarWhereInput | TodoScalarWhereInput[]
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CategoryCreateWithoutUserInput, CategoryUncheckedCreateWithoutUserInput> | CategoryCreateWithoutUserInput[] | CategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutUserInput | CategoryCreateOrConnectWithoutUserInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutUserInput | CategoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CategoryCreateManyUserInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutUserInput | CategoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutUserInput | CategoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutTodosInput = {
@@ -5184,8 +5380,22 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTodosInput, UserUpdateWithoutTodosInput>, UserUncheckedUpdateWithoutTodosInput>
   }
 
+  export type UserCreateNestedOneWithoutCateogoriesInput = {
+    create?: XOR<UserCreateWithoutCateogoriesInput, UserUncheckedCreateWithoutCateogoriesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCateogoriesInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type EnumColorFieldUpdateOperationsInput = {
     set?: $Enums.Color
+  }
+
+  export type UserUpdateOneRequiredWithoutCateogoriesNestedInput = {
+    create?: XOR<UserCreateWithoutCateogoriesInput, UserUncheckedCreateWithoutCateogoriesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCateogoriesInput
+    upsert?: UserUpsertWithoutCateogoriesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCateogoriesInput, UserUpdateWithoutCateogoriesInput>, UserUncheckedUpdateWithoutCateogoriesInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5381,6 +5591,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CategoryCreateWithoutUserInput = {
+    name: string
+    totalTodo?: number
+    color: $Enums.Color
+  }
+
+  export type CategoryUncheckedCreateWithoutUserInput = {
+    id?: number
+    name: string
+    totalTodo?: number
+    color: $Enums.Color
+  }
+
+  export type CategoryCreateOrConnectWithoutUserInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutUserInput, CategoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type CategoryCreateManyUserInputEnvelope = {
+    data: CategoryCreateManyUserInput | CategoryCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TodoUpsertWithWhereUniqueWithoutUserInput = {
     where: TodoWhereUniqueInput
     update: XOR<TodoUpdateWithoutUserInput, TodoUncheckedUpdateWithoutUserInput>
@@ -5410,10 +5643,38 @@ export namespace Prisma {
     userId?: IntFilter<"Todo"> | number
   }
 
+  export type CategoryUpsertWithWhereUniqueWithoutUserInput = {
+    where: CategoryWhereUniqueInput
+    update: XOR<CategoryUpdateWithoutUserInput, CategoryUncheckedUpdateWithoutUserInput>
+    create: XOR<CategoryCreateWithoutUserInput, CategoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type CategoryUpdateWithWhereUniqueWithoutUserInput = {
+    where: CategoryWhereUniqueInput
+    data: XOR<CategoryUpdateWithoutUserInput, CategoryUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CategoryUpdateManyWithWhereWithoutUserInput = {
+    where: CategoryScalarWhereInput
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type CategoryScalarWhereInput = {
+    AND?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+    OR?: CategoryScalarWhereInput[]
+    NOT?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+    id?: IntFilter<"Category"> | number
+    name?: StringFilter<"Category"> | string
+    totalTodo?: IntFilter<"Category"> | number
+    color?: EnumColorFilter<"Category"> | $Enums.Color
+    userId?: IntFilter<"Category"> | number
+  }
+
   export type UserCreateWithoutTodosInput = {
     name: string
     totalTodo?: number
     doneTodo?: number
+    cateogories?: CategoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTodosInput = {
@@ -5421,6 +5682,7 @@ export namespace Prisma {
     name: string
     totalTodo?: number
     doneTodo?: number
+    cateogories?: CategoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTodosInput = {
@@ -5443,6 +5705,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     totalTodo?: IntFieldUpdateOperationsInput | number
     doneTodo?: IntFieldUpdateOperationsInput | number
+    cateogories?: CategoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTodosInput = {
@@ -5450,6 +5713,53 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     totalTodo?: IntFieldUpdateOperationsInput | number
     doneTodo?: IntFieldUpdateOperationsInput | number
+    cateogories?: CategoryUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutCateogoriesInput = {
+    name: string
+    totalTodo?: number
+    doneTodo?: number
+    todos?: TodoCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutCateogoriesInput = {
+    id?: number
+    name: string
+    totalTodo?: number
+    doneTodo?: number
+    todos?: TodoUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutCateogoriesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCateogoriesInput, UserUncheckedCreateWithoutCateogoriesInput>
+  }
+
+  export type UserUpsertWithoutCateogoriesInput = {
+    update: XOR<UserUpdateWithoutCateogoriesInput, UserUncheckedUpdateWithoutCateogoriesInput>
+    create: XOR<UserCreateWithoutCateogoriesInput, UserUncheckedCreateWithoutCateogoriesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCateogoriesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCateogoriesInput, UserUncheckedUpdateWithoutCateogoriesInput>
+  }
+
+  export type UserUpdateWithoutCateogoriesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    doneTodo?: IntFieldUpdateOperationsInput | number
+    todos?: TodoUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCateogoriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    doneTodo?: IntFieldUpdateOperationsInput | number
+    todos?: TodoUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TodoCreateManyUserInput = {
@@ -5459,6 +5769,13 @@ export namespace Prisma {
     isDone: boolean
     category?: string | null
     date: Date | string
+  }
+
+  export type CategoryCreateManyUserInput = {
+    id?: number
+    name: string
+    totalTodo?: number
+    color: $Enums.Color
   }
 
   export type TodoUpdateWithoutUserInput = {
@@ -5485,6 +5802,26 @@ export namespace Prisma {
     isDone?: BoolFieldUpdateOperationsInput | boolean
     category?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryUpdateWithoutUserInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    color?: EnumColorFieldUpdateOperationsInput | $Enums.Color
+  }
+
+  export type CategoryUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    color?: EnumColorFieldUpdateOperationsInput | $Enums.Color
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    totalTodo?: IntFieldUpdateOperationsInput | number
+    color?: EnumColorFieldUpdateOperationsInput | $Enums.Color
   }
 
 
