@@ -23,7 +23,11 @@ const CreateTodo = () => {
     const name = categoryRef.current?.value;
     const userId = localStorage.getItem("userId");
     axios
-      .post("api/category", { userId: userId, name: name, color: color })
+      .post("api/category", {
+        userId: Number(userId),
+        name: name,
+        color: color,
+      })
       .then((res) => {
         console.error(res);
       })

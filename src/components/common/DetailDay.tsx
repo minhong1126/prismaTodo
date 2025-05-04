@@ -31,7 +31,7 @@ const DetailDay = ({ selectedDate, onSelect }: DetailDayProps) => {
   }
 
   return (
-    <div className="flex text-[24px] font-bold justify- mb-[69px] w-full">
+    <div className="flex text-[24px] font-bold justify-between mb-[69px] w-full">
       <button onClick={handlePreviousDay}>&lt;</button>
       <p>{formattedDate}</p>
       <button onClick={handleNextDay}>&gt;</button>

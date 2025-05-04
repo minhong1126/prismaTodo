@@ -1,26 +1,37 @@
-import React from "react";
-import { DropdownMenuCheckbox } from "@/components/common/DropdownMenuCheckBox";
+"use client";
+import { Button } from "@/components/ui/button";
+import axios from "axios";
+import React, { useRef, useState } from "react";
+import { DatePicker } from "react-aria-components";
 
-type CreateTodoProps = {
-  // open: boolean;
-  onClose: () => void;
-};
+const CreateTodo = () => {
+  const [date, setDate] = useState<Date>(new Date());
+  const titleRef = useRef<HTMLInputElement>(null);
+  const memoRef = useRef<HTMLInputElement>(null);
 
-const CreateTodo = ({ onClose }: CreateTodoProps) => {
-  // if (!open) return null;
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    axios.post("api/todo", {});
+  }
+
   return (
-    <div className="">
-      <form>
+    <div className="w-full h-full">
+      <form onSubmit={onSubmit}>
+        <label>날짜</label>
+        {/* <DatePicker
+          value={date} // DatePicker에 value로 Date 객체를 넘김
+          onChange={(newDate) => setDate(newDate)} // 선택한 날짜를 상태에 저장
+        /> */}
+
         <label> 할 일</label>
-        <input type="text" />
+        <input type="text" ref={titleRef} />
 
         <label> 메모 </label>
-        <input type="textarea" />
+        <input type="textarea" ref={memoRef} />
 
-        <label>카테고리</label>
-        <DropdownMenuCheckbox />
+        <Button type="submit">Save</Button>
       </form>
-      <p onClick={onClose}>뒤로 가기</p>
     </div>
   );
 };

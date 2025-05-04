@@ -2,15 +2,12 @@ import prisma from "@/lib/prisma";
 import { categoryType } from "@/type/categoryType";
 
 export const createCategory = async ({ name, userId, color }: categoryType) => {
+  console.error(name, userId, color);
   const category = await prisma.category.create({
     data: {
-      name,
       color,
-      user: {
-        connect: {
-          userId: userId,
-        },
-      },
+      name,
+      userId,
     },
   });
   return category;

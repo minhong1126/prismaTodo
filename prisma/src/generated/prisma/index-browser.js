@@ -121,28 +121,27 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
+  userId: 'userId',
   name: 'name',
   totalTodo: 'totalTodo',
   doneTodo: 'doneTodo'
 };
 
-exports.Prisma.TodoScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  memo: 'memo',
-  isDone: 'isDone',
-  category: 'category',
-  date: 'date',
-  userId: 'userId'
-};
-
 exports.Prisma.CategoryScalarFieldEnum = {
-  id: 'id',
+  categoryId: 'categoryId',
   name: 'name',
   totalTodo: 'totalTodo',
   color: 'color',
   userId: 'userId'
+};
+
+exports.Prisma.TodoScalarFieldEnum = {
+  todoId: 'todoId',
+  title: 'title',
+  memo: 'memo',
+  isDone: 'isDone',
+  date: 'date',
+  categoryId: 'categoryId'
 };
 
 exports.Prisma.SortOrder = {
@@ -173,8 +172,8 @@ exports.Color = exports.$Enums.Color = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Todo: 'Todo',
-  Category: 'Category'
+  Category: 'Category',
+  Todo: 'Todo'
 };
 
 /**

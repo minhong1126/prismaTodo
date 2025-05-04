@@ -13,11 +13,11 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     } else {
-      const user = await createCategory({ userId, name, color });
-      return NextResponse.json(user);
+      const category = await createCategory({ userId, name, color });
+      return NextResponse.json(category);
     }
   } catch (error) {
-    console.error("Error creating user:", error);
-    return NextResponse.json(error);
+    console.error("Error in Category Post:", error);
+    return NextResponse.json({ error: error }, { status: 500 });
   }
 }

@@ -24,17 +24,19 @@ const Page = () => {
     axios
       .post("api/user", { name: name })
       .then((res) => {
+        console.error(res);
         switch (res.status) {
           case 200:
           case 201:
-            localStorage.setItem("userId", res.data.id);
-            console.error(res.status, res.data.id);
+            localStorage.setItem("userId", res.data.userId);
+            console.error(res.status, res.data.userId);
+            router.push("/todo");
+            break;
+          case 500:
+            console.error("500 Server Error", res);
             break;
           default:
             console.error("No status:", res);
-        }
-        if (res.status == 200) {
-          // router.push("/todo");
         }
       })
       .catch((err) => {
