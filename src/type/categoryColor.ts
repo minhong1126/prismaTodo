@@ -1,4 +1,4 @@
-export enum CategoryColor {
+export enum categoryColor {
   BLACK = "BLACK",
   BLUE = "BLUE",
   SKYBLUE = "SKYBLUE",

@@ -9,12 +9,12 @@ const Page = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("userId")) {
-  //     router.push("/todo");
-  //     return;
-  //   }
-  // });
+  useEffect(() => {
+    if (localStorage.getItem("userId")) {
+      router.push("/todo");
+      return;
+    }
+  });
 
   async function onStart(e: React.FormEvent) {
     e.preventDefault();

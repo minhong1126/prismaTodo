@@ -2,7 +2,6 @@ import prisma from "@/lib/prisma";
 import { categoryType } from "@/type/categoryType";
 
 export const createCategory = async ({ name, userId, color }: categoryType) => {
-  console.error(name, userId, color);
   const category = await prisma.category.create({
     data: {
       color,
@@ -22,7 +21,7 @@ export const checkCategoryExist = async (name: string): Promise<boolean> => {
   return !!existingCategory;
 };
 
-export const getcategoryList = async () => {
+export const getCategoryList = async () => {
   const categoryList = await prisma.category.findMany();
   return categoryList;
 };

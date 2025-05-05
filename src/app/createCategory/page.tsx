@@ -1,21 +1,16 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { categoryType } from "@/type/categoryType";
-import { CategoryColor } from "@/type/colorEnum";
+import { categoryColor } from "@/type/categoryColor";
 import axios from "axios";
 
 const CreateTodo = () => {
-  const [color, setColor] = useState<categoryType["color"]>(
-    CategoryColor.WHITE
+  const [selectedColor, setSelectedColor] = useState<categoryColor>(
+    categoryColor.BLACK
   );
-  const CategoryColorList = Object.values(
-    CategoryColor
-  ) as categoryType["color"][];
-  const categoryRef = useRef<HTMLInputElement>(null);
 
-  const handleColorChange = (selectedColor: categoryType["color"]) => {
-    setColor(selectedColor);
-  };
+  const colorlist = Object.values(categoryColor);
+
+  const categoryRef = useRef<HTMLInputElement>(null);
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -26,10 +21,10 @@ const CreateTodo = () => {
       .post("api/category", {
         userId: Number(userId),
         name: name,
-        color: color,
+        color: selectedColor,
       })
       .then((res) => {
-        console.error(res);
+        console.log(res);
       })
       .catch((err) => console.error(err));
   }
@@ -41,26 +36,24 @@ const CreateTodo = () => {
         <input type="text" ref={categoryRef} />
 
         <label>색 설정</label>
-        <div className="flex gap-2 flex-wrap mt-2">
-          {CategoryColorList.map((colorOption) => (
+        <div className="flex gap-4">
+          {colorlist.map((color) => (
             <button
-              key={colorOption}
               type="button"
+              key={color}
+              className="w-10 h-10 rounded-full"
               style={{
-                backgroundColor: `var(--color-${colorOption.toLowerCase()})`,
+                backgroundColor: color,
+                border: color === selectedColor ? "4px solid black" : "none",
               }}
-              onClick={() => handleColorChange(colorOption)}
-              className={`w-8 h-8 rounded-full ${
-                color === colorOption ? "ring-2 ring-black" : ""
-              }`}
-              aria-label={colorOption}
+              onClick={() => setSelectedColor(color)}
             />
           ))}
         </div>
 
         <button
           type="submit"
-          className="mt-4 px-4 py-2 bg-black text-white rounded"
+          className="mt-4 px-4 py-2 bg-gray text-white rounded"
         >
           Submit
         </button>

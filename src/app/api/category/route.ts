@@ -1,4 +1,8 @@
-import { createCategory, checkCategoryExist } from "@/services/categoryService";
+import {
+  createCategory,
+  checkCategoryExist,
+  getCategoryList,
+} from "@/services/categoryService";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -20,4 +24,9 @@ export async function POST(req: Request) {
     console.error("Error in Category Post:", error);
     return NextResponse.json({ error: error }, { status: 500 });
   }
+}
+
+export async function GET() {
+  const categoryList = await getCategoryList();
+  return NextResponse.json({ category: categoryList }, { status: 200 });
 }
