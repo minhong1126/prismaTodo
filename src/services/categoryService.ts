@@ -4,9 +4,9 @@ import { categoryType } from "@/type/categoryType";
 export const createCategory = async ({ name, userId, color }: categoryType) => {
   const category = await prisma.category.create({
     data: {
-      color,
-      name,
-      userId,
+      color: color,
+      name: name,
+      userId: userId,
     },
   });
   return category;

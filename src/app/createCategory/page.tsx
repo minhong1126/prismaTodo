@@ -2,15 +2,15 @@
 import React, { useRef, useState } from "react";
 import { categoryColor } from "@/type/categoryColor";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const CreateTodo = () => {
   const [selectedColor, setSelectedColor] = useState<categoryColor>(
     categoryColor.BLACK
   );
-
-  const colorlist = Object.values(categoryColor);
-
   const categoryRef = useRef<HTMLInputElement>(null);
+  const colorlist = Object.values(categoryColor);
+  const router = useRouter();
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -25,6 +25,7 @@ const CreateTodo = () => {
       })
       .then((res) => {
         console.log(res);
+        router.back();
       })
       .catch((err) => console.error(err));
   }

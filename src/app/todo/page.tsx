@@ -7,18 +7,23 @@ import Header from "@/components/common/Header";
 import Todo from "@/components/common/Todo";
 import AddCategoryBtn from "@/components/common/AddCategoryBtn";
 import axios from "axios";
+import { categoryType } from "@/type/categoryType";
+import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
     new Date()
+  );
+  const [categoryList, setCategoryList] = useState<Array<categoryType> | null>(
+    null
   );
 
   useEffect(() => {
     axios
       .get("api/category")
       .then((res) => {
-        console.error(res);
-        if ((res.status = 200)) {
+        if (res.status === 200) {
+          setCategoryList(res.data.category);
         } else {
           console.error(res.status, res);
         }
@@ -26,12 +31,27 @@ export default function Home() {
       .catch((err) => console.error(err));
   }, []);
 
+  const b = "blue";
+
   return (
     <>
       <Header />
       <div className="w-full flex px-[48px]">
         <div className="w-1/2">
           <Calendar selected={selectedDate} onSelect={setSelectedDate} />
+          <ul>
+            {categoryList?.map((category) => (
+              <li key={category.categoryId}>
+                <Badge
+                  style={{
+                    backgroundColor: `var(--color-${category.color.toLocaleLowerCase()})`,
+                  }}
+                >
+                  {category.name}
+                </Badge>
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="w-1/2">
           <DetailDay selectedDate={selectedDate} onSelect={setSelectedDate} />
