@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { title, memo, isDone, category, date, userId } = body;
+    const { title, memo, isDone, category, date } = body;
 
     const todo = await createTodo({
       title,
@@ -12,7 +12,6 @@ export async function POST(req: Request) {
       isDone,
       category,
       date,
-      userId,
     });
 
     return NextResponse.json(todo);

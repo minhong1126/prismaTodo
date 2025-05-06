@@ -1,9 +1,25 @@
 import prisma from "@/lib/prisma";
 import { todoType } from "@/type/todoType";
 
-export const createTodo = async (data: todoType) => {
+export const createTodo = async ({
+  title,
+  memo,
+  isDone,
+  category,
+  date,
+}: todoType) => {
   const todo = await prisma.todo.create({
-    data,
+    data: {
+      title: title,
+      memo: memo,
+      isDone: isDone,
+      category: {
+        connect: {
+          name: category,
+        },
+      },
+      date,
+    },
   });
   return todo;
 };
