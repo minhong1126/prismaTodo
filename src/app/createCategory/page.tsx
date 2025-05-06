@@ -44,7 +44,7 @@ const CreateTodo = () => {
               key={color}
               className="w-10 h-10 rounded-full"
               style={{
-                backgroundColor: color,
+                backgroundColor: `var(--color-${color})`,
                 border: color === selectedColor ? "4px solid black" : "none",
               }}
               onClick={() => setSelectedColor(color)}
