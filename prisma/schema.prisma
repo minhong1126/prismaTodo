@@ -6,10 +6,53 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  output   = "./src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+enum Color {
+  BLACK
+  BLUE
+  SKYBLUE
+  YELLOW
+  PURPLE
+  GREEN
+  PINK
+  GRAY
+  WHITE
+}
+
+model User {
+  userId    Int    @id @default(autoincrement())
+  name      String @unique
+  totalTodo Int    @default(0)
+  doneTodo  Int    @default(0)
+
+  categories Category[]
+}
+
+model Category {
+  categoryId Int    @id @default(autoincrement())
+  name       String @unique
+  totalTodo  Int    @default(0)
+  color      Color
+  todos      Todo[]
+
+  userId Int
+  user   User @relation(fields: [userId], references: [userId])
+}
+
+model Todo {
+  todoId Int      @id @default(autoincrement())
+  title  String
+  memo   String?
+  isDone Boolean
+  date   String
+
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [categoryId])
 }
