@@ -2,8 +2,8 @@
 import React from "react";
 
 interface DetailDayProps {
-  selectedDate: Date | undefined;
-  onSelect: (date: Date | undefined) => void;
+  selectedDate: Date;
+  onSelect: (date: Date) => void;
 }
 
 const DetailDay = ({ selectedDate, onSelect }: DetailDayProps) => {

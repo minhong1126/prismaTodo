@@ -18,17 +18,22 @@ export const createTodo = async ({
           name: category,
         },
       },
-      date,
+      date: date,
     },
   });
   return todo;
 };
 
-export const getTodoList = async (date: Date) => {
-  const todoList = await prisma.todo.findMany({
+export const getTodoList = async (date: string) => {
+  const todos = await prisma.todo.findMany({
     where: {
-      date: date,
+      date: {
+        equals: date,
+      },
+    },
+    include: {
+      category: true,
     },
   });
-  return todoList;
+  return todos;
 };

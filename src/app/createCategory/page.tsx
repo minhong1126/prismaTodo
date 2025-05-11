@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { categoryColor } from "@/type/categoryColor";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 const CreateTodo = () => {
   const [selectedColor, setSelectedColor] = useState<categoryColor>(
@@ -24,7 +25,7 @@ const CreateTodo = () => {
         color: selectedColor,
       })
       .then((res) => {
-        console.log(res);
+        console.error(res);
         router.back();
       })
       .catch((err) => console.error(err));
@@ -52,12 +53,7 @@ const CreateTodo = () => {
           ))}
         </div>
 
-        <button
-          type="submit"
-          className="mt-4 px-4 py-2 bg-gray text-white rounded"
-        >
-          Submit
-        </button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );

@@ -47,11 +47,11 @@ model Category {
 }
 
 model Todo {
-  todoId Int      @id @default(autoincrement())
+  todoId Int     @id @default(autoincrement())
   title  String
   memo   String?
   isDone Boolean
-  date   DateTime
+  date   String
 
   categoryId Int
   category   Category @relation(fields: [categoryId], references: [categoryId])

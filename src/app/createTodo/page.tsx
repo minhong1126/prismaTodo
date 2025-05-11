@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { categoryType } from "@/type/categoryType";
-import { DatePicker } from "@/components/common/DatePicker";
-import { CategoryDropDown } from "@/components/common/CategoryDropDown";
+import { DatePicker } from "@/components/todo/DatePicker";
+import { CategoryDropDown } from "@/components/todo/CategoryDropDown";
 import { useRouter } from "next/navigation";
 
 const CreateTodo = () => {
@@ -21,7 +21,6 @@ const CreateTodo = () => {
       .then((res) => {
         if (res.status === 200) {
           setCategoryList(res.data.category);
-          router.back();
         } else {
           console.error(res.status, res);
         }
@@ -35,13 +34,21 @@ const CreateTodo = () => {
     const title = titleRef.current?.value;
     const memo = memoRef.current?.value;
 
-    axios.post("api/todo", {
-      title: title,
-      memo: memo,
-      isDone: false,
-      date: date,
-      category: category,
-    });
+    axios
+      .post("api/todo", {
+        title: title,
+        memo: memo,
+        isDone: false,
+        date: date.toISOString().split("T")[0],
+        category: category,
+      })
+      .then((res) => {
+        console.error(res);
+        router.back();
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
   }
 
   return (
